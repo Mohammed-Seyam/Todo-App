@@ -14,12 +14,15 @@ let pendingNumber = 0;
 let theemsBtn = document.querySelector("#theemsBtn");
 let card = document.querySelectorAll(".card-body");
 let addTaskModalbtn = document.querySelector("#addTaskModalbtn");
-let closeModalbtn = document.querySelector("#closeModalbtn");
+let closeAddbtn = document.querySelector("#closeAddbtn");
 let addTaskModal = document.querySelector(".addTaskModal");
 let del = document.querySelector(".del");
 let deletebtn = document.querySelector("#deletebtn");
+let closeDeletebtn = document.querySelector("#closeDeletebtn");
+let clearBtn = document.querySelector("#clearBtn");
 let deleteTaskModal = document.querySelector(".deleteTaskModal");
 let done = document.querySelector(".done");
+let alldel = document.querySelector(".alldel");
 
 
 let changeTheem = ()=>{
@@ -40,8 +43,10 @@ let changeTheem = ()=>{
 let checkEmpty = ()=>{
     if(allTasks.children.length == 0){
         emptyTask.classList.remove("none")
+        clearBtn.classList.add("none")
     }else{
         emptyTask.classList.add("none")
+        clearBtn.classList.remove("none");
     }
 }
 
@@ -146,18 +151,33 @@ document.addEventListener("click", (e)=>{
 
 
     deletebtn.addEventListener("click",()=>{
+      e.target.parentElement.remove();
 
-        e.target.parentElement.remove();
+      del.classList.add("deleted");
+      del.classList.remove("del");
+      setTimeout(() => {
+        del.classList.remove("deleted");
+        del.classList.add("del");
+      }, 2000);
 
-        del.classList.add("deleted");
-        del.classList.remove("del");
-        setTimeout(() => {
-          del.classList.remove("deleted");
-          del.classList.add("del");
-        }, 2000);
-        
+      // Counters
+
+      if (e.target.parentElement.classList.contains("pending")) {
+        pendingNumber -= 1;
+        pendingCounter.innerHTML = pendingNumber;
+        chackedCounter.innerHTML = checkNumber;
+      } else if (e.target.parentElement.classList.contains("checked")) {
+        checkNumber -= 1;
+        pendingCounter.innerHTML = pendingNumber;
+        chackedCounter.innerHTML = checkNumber;
+      }
+      // Counters
+
+      deleteTaskModal.classList.add("none");
+    })
+
+    closeDeletebtn.addEventListener("click", ()=>{
         deleteTaskModal.classList.add("none");
-        
     })
     
     
@@ -165,20 +185,12 @@ document.addEventListener("click", (e)=>{
 checkEmpty();
 //   delete task
 
-// Counters
-if (e.target.parentElement.classList.contains("pending")) {
-    pendingNumber -= 1;
-    pendingCounter.innerHTML = pendingNumber;
-    chackedCounter.innerHTML = checkNumber;
-} else if (e.target.parentElement.classList.contains("checked")) {
-    checkNumber -= 1;
-    pendingCounter.innerHTML = pendingNumber;
-    chackedCounter.innerHTML = checkNumber;
-  }
+
+
+
   
 })
 
-// Counters
 
 // Check tasks
 document.addEventListener("click", (e)=>{
@@ -216,6 +228,50 @@ document.addEventListener("click", (e)=>{
 // Check tasks
 
 
+// clear tasks
+
+clearBtn.addEventListener("click",()=>{
+    deleteTaskModal.classList.remove("none")
+
+
+    deletebtn.addEventListener("click",()=>{
+      allTasks.innerHTML = ""
+
+      alldel.classList.add("alldeleted");
+      alldel.classList.remove("alldel");
+      setTimeout(() => {
+        alldel.classList.remove("alldeleted");
+        alldel.classList.add("alldel");
+      }, 2000);
+
+      // Counters
+
+      
+        pendingNumber = 0;
+        pendingCounter.innerHTML = pendingNumber;
+        chackedCounter.innerHTML = checkNumber;
+      
+        checkNumber = 0;
+        pendingCounter.innerHTML = pendingNumber;
+        chackedCounter.innerHTML = checkNumber;
+      
+      // Counters
+
+      deleteTaskModal.classList.add("none");
+    })
+
+    closeDeletebtn.addEventListener("click", ()=>{
+        deleteTaskModal.classList.add("none");
+    })
+    
+    
+
+checkEmpty();
+})
+
+// clear tasks
+
+
 // dark and light mode
 
 theemsBtn.addEventListener("click", changeTheem)
@@ -224,9 +280,10 @@ addTaskModalbtn.addEventListener("click", ()=>{
     addTaskModal.classList.toggle("none")
 })
 
+closeAddbtn.addEventListener("click", () => {
+  addTaskModal.classList.toggle("none");
+});
 
-closeModalbtn.addEventListener("click", ()=>{
-    addTaskModal.classList.toggle("none")
-})
+
 
 // dark and light mode
