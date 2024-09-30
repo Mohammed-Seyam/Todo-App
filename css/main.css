@@ -1,0 +1,155 @@
+*{
+    transition: all .3s;
+}
+
+
+body{
+    border: none !important;
+}
+
+.none{
+    display: none;
+}
+
+.invalid{
+    border: 1px solid red;
+}
+
+i{
+    cursor: pointer;
+}
+
+.tasks{
+    max-height: 300px;
+    min-height: 150px;
+    position: relative;
+    
+}
+
+.task{
+    cursor: pointer;
+}
+
+.task:hover{
+    transform: scale(1.01);
+}
+
+i:hover{
+    transform: scale(1.1);
+}
+
+.task-container{
+    overflow: auto;
+}
+
+.added{
+    color: green;
+    width: 37%;
+    text-align: center;
+    position: absolute;
+    top: -70px;
+    left:30%;
+    z-index: 234567;
+    animation: added 2s;
+}
+
+
+.added p{
+    margin: 0 !important;
+    font-size: 19px;
+}
+
+.deleted{
+    color: red;
+    width: 37%;
+    text-align: center;
+    position: absolute;
+    top: -70px;
+    left:30%;
+    z-index: 234567;
+    animation: added 2s;
+}
+
+
+.deleted p{
+    margin: 0 !important;
+    font-size: 19px;
+}
+
+.del{
+    display: none;
+}
+
+.suc{
+    display: none;
+}
+
+.complete{
+    width: 37%;
+    text-align: center;
+    position: absolute;
+    top: -70px;
+    left:30%;
+    z-index: 234567;
+    animation: added 2s;
+}
+
+.done{
+    display: none;
+}
+
+.checked{
+    background-color: gray !important;
+    text-decoration: line-through;
+}
+
+.counter span{
+    font-size: 19px;
+}
+
+.dark{
+    background-color: #212529 !important;
+    color: #ffffff !important;
+    border: 1px solid white;
+}
+
+.model{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.192);
+    z-index: 12345678987654;
+}
+
+@keyframes added{
+
+    0%{
+        display: block;
+    }
+
+    10%{
+        top: 50px;
+    }
+
+    90%{
+        top: 50px;
+    }
+    
+    97%{
+        top: 70px;       
+    }
+
+    100%{
+        top: -70px;
+        display: block;
+    }
+}
+
+
+@media(max-widt: 700px){
+    .container{
+    padding: 0 20%;
+}
+}

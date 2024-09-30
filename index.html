@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+
+
+    <h1 class="text-center text-primary display-3"> ToDo App </h1>
+    <div class="container col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-grid">
+                    <button id="addTaskModalbtn" class="btn btn-info">Add Task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col-4 mx-auto">
+        <hr>
+    </div>
+    
+    
+    <h1 class="text-center display-4"> Your Tasks</h1>
+    
+    <div class="container col-md-8 counter">
+        <span class="float-start">Chacked Tasks: <span class="allChaked"></span></span>
+        <span class="float-end ">Pending Tasks: <span class="pendingCounter"></span></span>
+    </div>
+    
+    <div class="container mt-5  col-md-8">
+        <div class="card tasks">
+            <div class="suc alert alert-success">
+                <p>
+                    Task Added
+                    <i class="fa-regular fa-circle-check"></i>
+                </p> 
+            </div>
+
+            <div class="del alert alert-danger">
+                <p>
+                    Task Deleted
+                    <i class="fa-regular fa-circle-xmark"></i>
+                </p> 
+            </div>
+           
+            <div class="done alert alert-success text-success">
+                <p>
+                    All Tasks Done
+                    <i class="fa-regular fa-circle-check"></i>
+                </p> 
+            </div>
+
+            <div class="card-body task-container">
+                
+                <div id="emtyTask" class="alert alert-danger">
+                    Empty Tasks
+                </div>
+                <div id="allTasks" class="">
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="d-grid mt-4">
+            <button id="theemsBtn" class="btn btn-dark col-md-5 mx-auto">Dark Mood</button>
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="addTaskModal model none">
+           <div class="cardcontainer"></div>
+            <div class="card-body p-5 alert alert-light  col-md-5 m-auto my-5">
+                <div class="form-group my-3">
+                    <input type="text" id="taskInput" placeholder="Enter Your Task" class="  form-control">
+                    <span class="text-danger none emptyChar"> Your Must Enter Data </span>
+                    <span class="text-danger none invalidChar"> Task Must Be More Than 3 And Lees Than 20 Charecters </span>
+                    <span class="text-danger none exist"> Task Is Already Exist</span>
+                </div>
+                <div class="d-flex justify-content-between col-md-10 mx-auto">
+                    <button id="addTaskBtn" class="btn btn-success col-md-5 mx-2">Add</button>
+                    <button id="closeModalbtn" class="btn btn-outline-danger col-md-5 mx-2">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="deleteTaskModal model none">
+           <div class="cardcontainer"></div>
+            <div class="card-body p-5 alert alert-light  col-md-5 m-auto my-5">
+                <div class="form-group my-3">
+                    <h2 class="text-center text-danger">Are You Sure?!</h2>
+                    <span class="text-danger none emptyChar"> Your Must Enter Data </span>
+                    <span class="text-danger none invalidChar"> Task Must Be More Than 3 And Lees Than 20 Charecters </span>
+                    <span class="text-danger none exist"> Task Is Already Exist</span>
+                </div>
+                <div class="d-flex justify-content-between col-md-10 mx-auto">
+                    <button id="deletebtn" class="btn btn-danger col-md-5 mx-2">Delete</button>
+                    <button id="closedeletebtn" class="btn btn-outline-dark col-md-5 mx-2">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
