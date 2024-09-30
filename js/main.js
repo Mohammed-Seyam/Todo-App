@@ -151,8 +151,9 @@ document.addEventListener("click", (e)=>{
   if (e.target.classList.contains("delete")) {
 
     deleteTaskModal.classList.remove("none")
-
-
+    
+    let cls = e.target.parentElement.innerText.slice(3);
+    
     deletebtn.addEventListener("click",()=>{
       e.target.parentElement.remove();
 
@@ -162,6 +163,10 @@ document.addEventListener("click", (e)=>{
         del.classList.remove("deleted");
         del.classList.add("del");
       }, 2000);
+
+      allTasks.classList.remove(cls);
+
+      
 
       // Counters
 
@@ -284,6 +289,13 @@ addTaskModalbtn.addEventListener("click", ()=>{
 
 closeAddbtn.addEventListener("click", () => {
   addTaskModal.classList.toggle("none");
+
+  exist.classList.add("none");
+  emptyChar.classList.add("none");
+  invalidChar.classList.add("none");
+  taskInput.classList.remove("invalid");
+  taskInput.value = "";
+
 });
 
 
