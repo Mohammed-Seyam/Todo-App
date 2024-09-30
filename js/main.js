@@ -19,8 +19,11 @@ let addTaskModal = document.querySelector(".addTaskModal");
 let del = document.querySelector(".del");
 let deletebtn = document.querySelector("#deletebtn");
 let closeDeletebtn = document.querySelector("#closeDeletebtn");
-let clearBtn = document.querySelector("#clearBtn");
 let deleteTaskModal = document.querySelector(".deleteTaskModal");
+let clearAllbtn = document.querySelector("#clearAllbtn");
+let closeclearbtn = document.querySelector("#closeclearbtn");
+let clearTaskModal = document.querySelector(".clearTaskModal");
+let clearBtn = document.querySelector("#clearBtn");
 let done = document.querySelector(".done");
 let alldel = document.querySelector(".alldel");
 
@@ -231,11 +234,11 @@ document.addEventListener("click", (e)=>{
 // clear tasks
 
 clearBtn.addEventListener("click",()=>{
-    deleteTaskModal.classList.remove("none")
+    clearTaskModal.classList.remove("none")
 
 
-    deletebtn.addEventListener("click",()=>{
-      allTasks.innerHTML = ""
+    clearAllbtn.addEventListener("click", () => {
+      allTasks.innerHTML = "";
 
       alldel.classList.add("alldeleted");
       alldel.classList.remove("alldel");
@@ -246,22 +249,21 @@ clearBtn.addEventListener("click",()=>{
 
       // Counters
 
-      
-        pendingNumber = 0;
-        pendingCounter.innerHTML = pendingNumber;
-        chackedCounter.innerHTML = checkNumber;
-      
-        checkNumber = 0;
-        pendingCounter.innerHTML = pendingNumber;
-        chackedCounter.innerHTML = checkNumber;
-      
+      pendingNumber = 0;
+      pendingCounter.innerHTML = pendingNumber;
+      chackedCounter.innerHTML = checkNumber;
+
+      checkNumber = 0;
+      pendingCounter.innerHTML = pendingNumber;
+      chackedCounter.innerHTML = checkNumber;
+
       // Counters
 
-      deleteTaskModal.classList.add("none");
-    })
+      clearTaskModal.classList.add("none");
+    });
 
-    closeDeletebtn.addEventListener("click", ()=>{
-        deleteTaskModal.classList.add("none");
+    closeclearbtn.addEventListener("click", ()=>{
+        clearTaskModal.classList.add("none");
     })
     
     
